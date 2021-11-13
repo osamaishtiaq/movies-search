@@ -1,6 +1,6 @@
 ## Description
 
-### Application with smart search and sharing capabilities for movie movies
+### Application with smart search and sharing capabilities for movies
 
 ## Installation
 
