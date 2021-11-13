@@ -1,2 +1,2 @@
-# trailers-search
-Trailers Search Application
+# movies-search
+Movies Search Application
