@@ -23,7 +23,6 @@ export class YoutubeApiService {
   }
 
   async searchTrailer(searchTerm: string): Promise<YoutubeSearchResultItems[]> {
-    Logger.log('YoutubeApiService.searchTrailer - params: ', searchTerm);
     const params = {
       topidId: '/m/02vxn',
       key: this.apiKey,
@@ -34,8 +33,9 @@ export class YoutubeApiService {
       q: searchTerm,
       part: 'snippet',
     };
-
     const url = `${this.baseUrl}/search?${createQueryParamsString(params)}`;
+
+    Logger.log(`YoutubeApiService.searchTrailer - ${url} - ${params}`);
 
     try {
       const resp: YoutubeSearchResponseDto = await firstValueFrom(

@@ -4,6 +4,7 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { MovieSearchDto } from './dtos/movie-search-query.dto';
 import { MovieDBResponseItem } from '@shared/providers/movie-db-api/dtos/movie-db-response.dto';
 import { MovieDetailsParamDto } from './dtos/movie-details-param.dto';
+import { MovieDetailsResponse } from './dtos/movie-details-response.dto';
 
 @ApiTags('movies')
 @Controller({ path: 'movies', version: '1' })
@@ -41,6 +42,11 @@ export class MoviesController {
   }
 
   @Get(':id')
+  @ApiResponse({
+    status: 200,
+    type: MovieDetailsResponse,
+    description: 'get movie details by id',
+  })
   async getDetailsById(@Param() param: MovieDetailsParamDto): Promise<any> {
     return this.moviesService.getDetailsById(param.id);
   }

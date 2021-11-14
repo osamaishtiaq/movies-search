@@ -9,6 +9,7 @@ import {
   MovieDBResponseItem,
 } from './dtos/movie-db-response.dto';
 import { MovieDbSearchParamDto } from './dtos/movie-db-search-param.dto';
+import { MovieDBDetailsDto } from './dtos/movie-db-details-response.dto';
 
 @Injectable()
 export class MovieDbAPIService {
@@ -39,8 +40,6 @@ export class MovieDbAPIService {
   async getMovies(
     searchParam: MovieDbSearchParamDto,
   ): Promise<MovieDBResponseItem[]> {
-    Logger.log('MovieDbAPIService.getMovies - params: ', searchParam);
-
     const params = {
       api_key: this.apiKey,
       query: searchParam.searchTerm,
@@ -51,7 +50,9 @@ export class MovieDbAPIService {
     const url = `${this.baseUrl}/search/movie?${createQueryParamsString(
       params,
     )}`;
-
+    Logger.log(
+      `MovieDbAPIService.getMovies - ${url} - ${JSON.stringify(searchParam)}`,
+    );
     try {
       const apiResp: MovieDBResponseDto = await firstValueFrom(
         this.httpService.get(url).pipe(map((resp) => resp.data)),
@@ -74,8 +75,8 @@ export class MovieDbAPIService {
   }
 
   async getTrendingDaily(): Promise<MovieDBResponseItem[]> {
-    Logger.log('MovieDbAPIService.getTrending');
     const url = `${this.baseUrl}/trending/movie/day?api_key=${this.apiKey}&language=en-US`;
+    Logger.log(`MovieDbAPIService.getTrending - ${url}`);
     try {
       const apiResp: MovieDBResponseDto = await firstValueFrom(
         this.httpService.get(url).pipe(map((resp) => resp.data)),
@@ -98,8 +99,8 @@ export class MovieDbAPIService {
   }
 
   async getTopRated(): Promise<MovieDBResponseItem[]> {
-    Logger.log('MovieDbAPIService.getTopRated');
     const url = `${this.baseUrl}/movie/top_rated?api_key=${this.apiKey}&language=en-US`;
+    Logger.log(`MovieDbAPIService.getTopRated - ${url}`);
     try {
       const apiResp: MovieDBResponseDto = await firstValueFrom(
         this.httpService.get(url).pipe(map((resp) => resp.data)),
@@ -118,6 +119,22 @@ export class MovieDbAPIService {
         `ERROR OCCURRED - MovieDbAPIService.getTopRated - URL: ${url} - ERROR: ${err}`,
       );
       return [];
+    }
+  }
+
+  async getById(movieId: number): Promise<MovieDBDetailsDto> {
+    const url = `${this.baseUrl}/movie/${movieId}?api_key=${this.apiKey}&language=en-US`;
+    Logger.log(`MovieDbAPIService.getById - ${url}`);
+    try {
+      const apiResp: MovieDBDetailsDto = await firstValueFrom(
+        this.httpService.get(url).pipe(map((resp) => resp.data)),
+      );
+      return apiResp;
+    } catch (err) {
+      Logger.error(
+        `ERROR OCCURRED - MovieDbAPIService.getById - URL: ${url} - ERROR: ${err}`,
+      );
+      return null;
     }
   }
 }

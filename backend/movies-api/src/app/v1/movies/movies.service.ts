@@ -1,8 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { MovieDBDetailsDto } from '@shared/providers/movie-db-api/dtos/movie-db-details-response.dto';
 import { MovieDBResponseItem } from '@shared/providers/movie-db-api/dtos/movie-db-response.dto';
 import { MovieDbSearchParamDto } from '@shared/providers/movie-db-api/dtos/movie-db-search-param.dto';
 import { MovieDbAPIService } from '@shared/providers/movie-db-api/movie-db-api.service';
 import { YoutubeApiService } from '@shared/providers/youtube-api/youtube-api.service';
+import { MovieDetailsResponse } from './dtos/movie-details-response.dto';
+import {
+  createYoutubeTrailerSearchTerm,
+  getFilteredTrailers,
+} from './helpers/youtube-trailer.helper';
 
 @Injectable()
 export class MoviesService {
@@ -18,24 +24,6 @@ export class MoviesService {
       searchParams,
     );
 
-    const youtubeSearch = searchParams.searchTerm
-      .toLocaleLowerCase()
-      .includes('trailer')
-      ? searchParams.searchTerm
-      : `${searchParams.searchTerm} trailer`;
-
-    const youtubeResults = await this.youtubeApiService.searchTrailer(
-      youtubeSearch,
-    );
-
-    const trailersList = youtubeResults
-      .map((x) => x.snippet)
-      .filter((x) =>
-        x.title
-          .toLowerCase()
-          .includes(searchParams.searchTerm.toLocaleLowerCase()),
-      );
-
     return movieDbApiResponse;
   }
 
@@ -49,7 +37,22 @@ export class MoviesService {
     return movideDbApiResp;
   }
 
-  async getDetailsById(movieId: number): Promise<any> {
-    return 'Hellow world! ' + movieId;
+  async getDetailsById(movieId: number): Promise<MovieDetailsResponse> {
+    const movieDbApiResp: MovieDBDetailsDto =
+      await this.moviesDbAPIService.getById(movieId);
+
+    if (movieDbApiResp == null) {
+      throw new NotFoundException(`Couldn't find movie with id: ${movieId}`);
+    }
+
+    const youtubeSearch = createYoutubeTrailerSearchTerm(movieDbApiResp);
+
+    const youtubeResults = await this.youtubeApiService.searchTrailer(
+      youtubeSearch,
+    );
+
+    const trailersList = getFilteredTrailers(youtubeResults, movieDbApiResp);
+
+    return { ...movieDbApiResp, trailers: trailersList };
   }
 }
