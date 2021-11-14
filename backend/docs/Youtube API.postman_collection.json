@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "281cded0-6610-480a-b932-ac5a10e4c383",
+		"name": "Youtube API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{YOUTUBE_API_BASE_URL}}/search?part=snippet&q=the mask trailer&topicId=/m/02vxn&key={{YOUTUBE_API_KEY}}&type=video&videoDuration=short&safeSearch=none&videoEmbeddable=true",
+					"host": [
+						"{{YOUTUBE_API_BASE_URL}}"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "part",
+							"value": "snippet"
+						},
+						{
+							"key": "q",
+							"value": "the mask trailer"
+						},
+						{
+							"key": "topicId",
+							"value": "/m/02vxn"
+						},
+						{
+							"key": "key",
+							"value": "{{YOUTUBE_API_KEY}}"
+						},
+						{
+							"key": "type",
+							"value": "video"
+						},
+						{
+							"key": "videoDuration",
+							"value": "short"
+						},
+						{
+							"key": "videoType",
+							"value": "movie",
+							"disabled": true
+						},
+						{
+							"key": "safeSearch",
+							"value": "none"
+						},
+						{
+							"key": "videoEmbeddable",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Video",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{YOUTUBE_API_BASE_URL}}/videos?part=player&key={{YOUTUBE_API_KEY}}&id=c3khanND3t8",
+					"host": [
+						"{{YOUTUBE_API_BASE_URL}}"
+					],
+					"path": [
+						"videos"
+					],
+					"query": [
+						{
+							"key": "part",
+							"value": "player"
+						},
+						{
+							"key": "key",
+							"value": "{{YOUTUBE_API_KEY}}"
+						},
+						{
+							"key": "id",
+							"value": "c3khanND3t8"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
