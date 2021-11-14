@@ -1,10 +1,13 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { firstValueFrom, map } from 'rxjs';
 import { ENV_KEYS } from 'src/shared/constants';
 import { createQueryParamsString } from 'src/shared/utils';
-import { YoutubeSearchResponseDto } from './dtos/youtube-search-response.dto';
+import {
+  YoutubeSearchResponseDto,
+  YoutubeSearchResultItems,
+} from './dtos/youtube-search-response.dto';
 
 @Injectable()
 export class YoutubeApiService {
@@ -19,7 +22,8 @@ export class YoutubeApiService {
     this.apiKey = this.config.get<string>(ENV_KEYS.YOUTUBE_API_KEY);
   }
 
-  async searchTrailer(searchTerm: string): Promise<YoutubeSearchResponseDto> {
+  async searchTrailer(searchTerm: string): Promise<YoutubeSearchResultItems[]> {
+    Logger.log('YoutubeApiService.searchTrailer - params: ', searchTerm);
     const params = {
       topidId: '/m/02vxn',
       key: this.apiKey,
@@ -33,9 +37,19 @@ export class YoutubeApiService {
 
     const url = `${this.baseUrl}/search?${createQueryParamsString(params)}`;
 
-    console.log('URL: ', url);
-    return await firstValueFrom(
-      this.httpService.get(url).pipe(map((resp) => resp.data)),
-    );
+    try {
+      const resp: YoutubeSearchResponseDto = await firstValueFrom(
+        this.httpService.get(url).pipe(map((resp) => resp.data)),
+      );
+
+      const searchResults = resp.items;
+
+      return searchResults;
+    } catch (err) {
+      Logger.error(
+        `ERROR OCCURRED - YoutubeApiService.searchTrailer - URL: ${url} - ERROR: ${err}`,
+      );
+      return [];
+    }
   }
 }

@@ -1,14 +1,33 @@
-export interface MovieDBResponseDto {
+export class MovieDBResponseDto {
   page: number;
   results: MovieDBResponseItem[];
   total_pages: number;
   total_results: number;
+
+  static mapMovieDbItemsList(
+    sourceDto: MovieDBResponseDto,
+    smallImgPath: string,
+    largeImgPath: string,
+  ): MovieDBResponseItem[] {
+    const moviesList = sourceDto.results.map((x) => {
+      // update url paths for assets
+      x.backdrop_path = x.backdrop_path && `${largeImgPath}${x.backdrop_path}`;
+      x.poster_path = x.poster_path && `${smallImgPath}${x.poster_path}`;
+
+      // remove unneccessary fields
+      delete x['genre_ids'];
+      delete x['video'];
+      delete x['adult'];
+
+      return x;
+    });
+
+    return moviesList;
+  }
 }
 
-export interface MovieDBResponseItem {
-  adult: boolean;
+export class MovieDBResponseItem {
   backdrop_path: null | string;
-  genre_ids: number[];
   id: number;
   original_language: string;
   original_title: string;
@@ -17,7 +36,6 @@ export interface MovieDBResponseItem {
   poster_path: null | string;
   release_date?: Date;
   title: string;
-  video: boolean;
   vote_average: number;
   vote_count: number;
 }

@@ -4,10 +4,10 @@ export interface YoutubeSearchResponseDto {
   nextPageToken: string;
   regionCode: string;
   pageInfo: PageInfo;
-  items: Item[];
+  items: YoutubeSearchResultItems[];
 }
 
-export interface Item {
+export interface YoutubeSearchResultItems {
   kind: string;
   etag: string;
   id: ID;
