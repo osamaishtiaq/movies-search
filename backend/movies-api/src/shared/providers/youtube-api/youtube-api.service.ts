@@ -2,8 +2,8 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { firstValueFrom, map } from 'rxjs';
-import { ENV_KEYS } from 'src/shared/constants';
-import { createQueryParamsString } from 'src/shared/utils';
+import { ENV_KEYS } from '@shared/common/constants';
+import { createQueryParamsString } from '@shared/common/utils';
 import {
   YoutubeSearchResponseDto,
   YoutubeSearchResultItems,

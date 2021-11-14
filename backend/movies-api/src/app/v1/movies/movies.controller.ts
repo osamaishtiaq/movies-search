@@ -2,7 +2,7 @@ import { Controller, Get, Param, Query } from '@nestjs/common';
 import { MoviesService } from './movies.service';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { MovieSearchDto } from './dtos/movie-search-query.dto';
-import { MovieDBResponseItem } from 'src/shared/services/movie-db-api/dtos/movie-db-response.dto';
+import { MovieDBResponseItem } from '@shared/providers/movie-db-api/dtos/movie-db-response.dto';
 import { MovieDetailsParamDto } from './dtos/movie-details-param.dto';
 
 @ApiTags('movies')

@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { ENV_KEYS } from './shared/constants';
+import { ENV_KEYS } from '@shared/common/constants';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

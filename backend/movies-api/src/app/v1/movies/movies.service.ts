@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { MovieDBResponseItem } from 'src/shared/services/movie-db-api/dtos/movie-db-response.dto';
-import { MovieDbSearchParamDto } from 'src/shared/services/movie-db-api/dtos/movie-db-search-param.dto';
-import { MovieDbAPIService } from 'src/shared/services/movie-db-api/movie-db-api.service';
-import { YoutubeApiService } from 'src/shared/services/youtube-api/youtube-api.service';
+import { MovieDBResponseItem } from '@shared/providers/movie-db-api/dtos/movie-db-response.dto';
+import { MovieDbSearchParamDto } from '@shared/providers/movie-db-api/dtos/movie-db-search-param.dto';
+import { MovieDbAPIService } from '@shared/providers/movie-db-api/movie-db-api.service';
+import { YoutubeApiService } from '@shared/providers/youtube-api/youtube-api.service';
 
 @Injectable()
 export class MoviesService {
