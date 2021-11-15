@@ -4,10 +4,11 @@ import { MovieDbAPIService } from '@shared/providers/movie-db-api/movie-db-api.s
 import { SharedModule } from '@shared/shared.module';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [V1Module, SharedModule, HttpModule, ConfigModule.forRoot()],
-  controllers: [],
+  controllers: [AppController],
   providers: [MovieDbAPIService],
 })
 export class AppModule {}
