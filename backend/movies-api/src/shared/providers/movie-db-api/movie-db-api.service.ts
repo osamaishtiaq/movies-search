@@ -1,5 +1,5 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { firstValueFrom, map } from 'rxjs';
 import { ENV_KEYS } from '@shared/common/constants';
@@ -70,7 +70,9 @@ export class MovieDbAPIService {
       Logger.error(
         `ERROR OCCURRED - MovieDbAPIService.getMovies - URL: ${url} - ERROR: ${err}`,
       );
-      return [];
+      throw new BadRequestException(
+        `Couldn't find result for query: ${params.query}`,
+      );
     }
   }
 

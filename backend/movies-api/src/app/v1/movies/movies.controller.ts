@@ -18,6 +18,8 @@ export class MoviesController {
     description: 'returns list of movies matching the search terms',
   })
   async findAll(@Query() searchParams: MovieSearchDto): Promise<any> {
+    // const keys = await this.cacheManager.keys();
+    // console.log('Cache keys: ', keys);
     return this.moviesService.findMoviesByCriteria(searchParams);
   }
 
