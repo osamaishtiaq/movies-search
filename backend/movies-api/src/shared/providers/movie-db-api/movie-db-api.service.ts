@@ -1,5 +1,5 @@
 import { HttpService } from '@nestjs/axios';
-import { BadRequestException, Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { firstValueFrom, map } from 'rxjs';
 import { ENV_KEYS } from '@shared/common/constants';
@@ -70,9 +70,6 @@ export class MovieDbAPIService {
       Logger.error(
         `ERROR OCCURRED - MovieDbAPIService.getMovies - URL: ${url} - ERROR: ${err}`,
       );
-      throw new BadRequestException(
-        `Couldn't find result for query: ${params.query}`,
-      );
     }
   }
 
@@ -128,8 +125,13 @@ export class MovieDbAPIService {
     const url = `${this.baseUrl}/movie/${movieId}?api_key=${this.apiKey}&language=en-US`;
     Logger.log(`MovieDbAPIService.getById - ${url}`);
     try {
-      const apiResp: MovieDBDetailsDto = await firstValueFrom(
+      let apiResp: MovieDBDetailsDto = await firstValueFrom(
         this.httpService.get(url).pipe(map((resp) => resp.data)),
+      );
+      apiResp = MovieDBResponseDto.updateBackdropPosterUrl(
+        apiResp,
+        this.smallImgPath,
+        this.largeImgPath,
       );
       return apiResp;
     } catch (err) {

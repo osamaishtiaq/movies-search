@@ -11,8 +11,7 @@ export class MovieDBResponseDto {
   ): MovieDBResponseItem[] {
     const moviesList = sourceDto.results.map((x) => {
       // update url paths for assets
-      x.backdrop_path = x.backdrop_path && `${largeImgPath}${x.backdrop_path}`;
-      x.poster_path = x.poster_path && `${smallImgPath}${x.poster_path}`;
+      x = this.updateBackdropPosterUrl(x, smallImgPath, largeImgPath);
 
       // remove unneccessary fields
       delete x['genre_ids'];
@@ -24,6 +23,22 @@ export class MovieDBResponseDto {
 
     return moviesList;
   }
+
+  static updateBackdropPosterUrl(
+    dto: IMovieDbItem,
+    smallImgPath: string,
+    largeImgPath: string,
+  ): any {
+    dto.backdrop_path =
+      dto.backdrop_path && `${largeImgPath}${dto.backdrop_path}`;
+    dto.poster_path = dto.poster_path && `${smallImgPath}${dto.poster_path}`;
+    return dto;
+  }
+}
+
+interface IMovieDbItem {
+  backdrop_path: string;
+  poster_path: string;
 }
 
 export class MovieDBResponseItem {
