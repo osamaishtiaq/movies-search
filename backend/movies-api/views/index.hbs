@@ -3,25 +3,23 @@
     <meta charset='utf-8' />
     <title>Movie Search API</title>
     <style>
-        .page-links {
-            text-decoration: none;
-            cursor: pointer;
-            color: white;
-            background-color: teal;
-            border: 2px solid rgb(204, 204, 116);
-            display: inline-block;
-            min-width: 300px;
-            padding: 30px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
+      :root { background-color: #333; color:beige; font-family: Arial,
+      Helvetica, sans-serif; } .page-links { text-decoration: none; cursor:
+      pointer; color: white; background-color: teal; border: 2px solid rgb(204,
+      204, 116); display: inline-block; min-width: 300px; padding: 30px;
+      margin-left: auto; margin-right: auto; text-align: center; margin-top:
+      10px;} .container { width: 80%; margin-left: auto; margin-right: auto;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; }
     </style>
   </head>
   <body>
-    <a class='page-links' href='/api/docs'>Swagger Documentation</a>
-    <a class='page-links' href='/register'>Register</a>
-    <a class='page-links' href='/login'>Login</a>
+    <div class='container'>
+      <a class='page-links' href='/api/docs'>Swagger Documentation</a>
+
+      <h3>API Status: {{message}}</h3>
+    </div>
+
   </body>
   <script>
     console.log('{{message}}')
