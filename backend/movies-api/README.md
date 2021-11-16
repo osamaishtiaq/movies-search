@@ -1,7 +1,7 @@
 ## Description
 
 ### This is a super fast and smart rest-api to simply search movies. It has been built to showcase the best practices and industry standards for building a scalable and maintainable codebase. Features include: 
-1. Automated OpenAPI Spec document generation via swagger from code     
+1. OpenAPI Spec document generation via swagger from code automatically     
 2. Aggregates Youtube Search Api and The Movie Database Api and smartly builds search results     
 3. Caching for fast performance     
 4. Opinionated convention over confiration approach in codebase and strict type/format checking to enforce self-documentation and code readability
