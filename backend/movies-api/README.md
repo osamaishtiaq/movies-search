@@ -26,7 +26,8 @@
 * Install latest nodejs     
 * Install Nestjs cli      
 * For environment, create a new .env file in the project root. Copy sample.env file's content and in it. Finally, insert required credentials i.e. Youtube api key and you are good to go!       
-
+* Run project an go to http://localhost:4545/api/docs/ to check out all the apis
+* Or import the postman collection and environment in the docs folder to postman and test api from there.
 
 ## Installation
 
