@@ -8,14 +8,18 @@
 		{
 			"name": "Trending Daily",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfdXNlciIsInN1YiI6MSwiaWF0IjoxNjM3MDg2NTg3LCJleHAiOjE2MzcwODY2NDd9.ajAExf_TPNSh1b0y-aNFX6n-lQCRPyr6HYhskfKq9D0",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": [
-					{
-						"key": "X-ACCESS-TOKEN",
-						"value": "{{X_ACCESS_TOKEN}}",
-						"type": "text"
-					}
-				],
+				"header": [],
 				"url": {
 					"raw": "{{BASE_URL}}/{{API_VERSION}}/movies/trending-daily",
 					"host": [
@@ -56,14 +60,18 @@
 		{
 			"name": "Top Rated",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfdXNlciIsInN1YiI6MSwiaWF0IjoxNjM3MDg2NTg3LCJleHAiOjE2MzcwODY2NDd9.ajAExf_TPNSh1b0y-aNFX6n-lQCRPyr6HYhskfKq9D0",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": [
-					{
-						"key": "X-ACCESS-TOKEN",
-						"value": "{{X_ACCESS_TOKEN}}",
-						"type": "text"
-					}
-				],
+				"header": [],
 				"url": {
 					"raw": "{{BASE_URL}}/{{API_VERSION}}/movies/top-rated",
 					"host": [
@@ -104,14 +112,18 @@
 		{
 			"name": "Search Movies",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfdXNlciIsInN1YiI6MSwiaWF0IjoxNjM3MDg2NTg3LCJleHAiOjE2MzcwODY2NDd9.ajAExf_TPNSh1b0y-aNFX6n-lQCRPyr6HYhskfKq9D0",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": [
-					{
-						"key": "X-ACCESS-TOKEN",
-						"value": "{{X_ACCESS_TOKEN}}",
-						"type": "text"
-					}
-				],
+				"header": [],
 				"url": {
 					"raw": "{{BASE_URL}}/{{API_VERSION}}/movies/search?searchTerm=Inception",
 					"host": [
@@ -169,14 +181,18 @@
 		{
 			"name": "Movie By Id",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfdXNlciIsInN1YiI6MSwiaWF0IjoxNjM3MDg2NTg3LCJleHAiOjE2MzcwODY2NDd9.ajAExf_TPNSh1b0y-aNFX6n-lQCRPyr6HYhskfKq9D0",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": [
-					{
-						"key": "X-ACCESS-TOKEN",
-						"value": "{{X_ACCESS_TOKEN}}",
-						"type": "text"
-					}
-				],
+				"header": [],
 				"url": {
 					"raw": "{{BASE_URL}}/{{API_VERSION}}/movies/27205",
 					"host": [
@@ -213,6 +229,33 @@
 					"body": "{\r\n    \"adult\": false,\r\n    \"backdrop_path\": \"https://www.themoviedb.org/t/p/w600_and_h900_bestv2/s3TBrRGB1iav7gFOCNx3H31MoES.jpg\",\r\n    \"belongs_to_collection\": null,\r\n    \"budget\": 160000000,\r\n    \"genres\": [\r\n        {\r\n            \"id\": 28,\r\n            \"name\": \"Action\"\r\n        },\r\n        {\r\n            \"id\": 878,\r\n            \"name\": \"Science Fiction\"\r\n        },\r\n        {\r\n            \"id\": 12,\r\n            \"name\": \"Adventure\"\r\n        }\r\n    ],\r\n    \"homepage\": \"http://inceptionmovie.warnerbros.com/\",\r\n    \"id\": 27205,\r\n    \"imdb_id\": \"tt1375666\",\r\n    \"original_language\": \"en\",\r\n    \"original_title\": \"Inception\",\r\n    \"overview\": \"Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: \\\"inception\\\", the implantation of another person's idea into a target's subconscious.\",\r\n    \"popularity\": 150.615,\r\n    \"poster_path\": \"https://www.themoviedb.org/t/p/w220_and_h330_face/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg\",\r\n    \"production_companies\": [\r\n        {\r\n            \"id\": 923,\r\n            \"logo_path\": \"/5UQsZrfbfG2dYJbx8DxfoTr2Bvu.png\",\r\n            \"name\": \"Legendary Pictures\",\r\n            \"origin_country\": \"US\"\r\n        },\r\n        {\r\n            \"id\": 9996,\r\n            \"logo_path\": \"/3tvBqYsBhxWeHlu62SIJ1el93O7.png\",\r\n            \"name\": \"Syncopy\",\r\n            \"origin_country\": \"GB\"\r\n        },\r\n        {\r\n            \"id\": 174,\r\n            \"logo_path\": \"/IuAlhI9eVC9Z8UQWOIDdWRKSEJ.png\",\r\n            \"name\": \"Warner Bros. Pictures\",\r\n            \"origin_country\": \"US\"\r\n        }\r\n    ],\r\n    \"production_countries\": [\r\n        {\r\n            \"iso_3166_1\": \"GB\",\r\n            \"name\": \"United Kingdom\"\r\n        },\r\n        {\r\n            \"iso_3166_1\": \"US\",\r\n            \"name\": \"United States of America\"\r\n        }\r\n    ],\r\n    \"release_date\": \"2010-07-15\",\r\n    \"revenue\": 825532764,\r\n    \"runtime\": 148,\r\n    \"spoken_languages\": [\r\n        {\r\n            \"english_name\": \"English\",\r\n            \"iso_639_1\": \"en\",\r\n            \"name\": \"English\"\r\n        },\r\n        {\r\n            \"english_name\": \"Japanese\",\r\n            \"iso_639_1\": \"ja\",\r\n            \"name\": \"日本語\"\r\n        }\r\n    ],\r\n    \"status\": \"Released\",\r\n    \"tagline\": \"Your mind is the scene of the crime.\",\r\n    \"title\": \"Inception\",\r\n    \"video\": false,\r\n    \"vote_average\": 8.3,\r\n    \"vote_count\": 30226,\r\n    \"trailers\": [\r\n        {\r\n            \"publishedAt\": \"2013-12-03T00:46:40Z\",\r\n            \"channelId\": \"UCTCjFFoX1un-j7ni4B6HJ3Q\",\r\n            \"title\": \"Inception (2010) Official Trailer #1 - Christopher Nolan Movie HD\",\r\n            \"description\": \"Check out the official Inception (2010) Trailer starring Edward Norton! Let us know what you think in the comments below. ▻ Watch on FandangoNOW: ...\",\r\n            \"thumbnails\": {\r\n                \"default\": {\r\n                    \"url\": \"https://i.ytimg.com/vi/YoHD9XEInc0/default.jpg\",\r\n                    \"width\": 120,\r\n                    \"height\": 90\r\n                },\r\n                \"medium\": {\r\n                    \"url\": \"https://i.ytimg.com/vi/YoHD9XEInc0/mqdefault.jpg\",\r\n                    \"width\": 320,\r\n                    \"height\": 180\r\n                },\r\n                \"high\": {\r\n                    \"url\": \"https://i.ytimg.com/vi/YoHD9XEInc0/hqdefault.jpg\",\r\n                    \"width\": 480,\r\n                    \"height\": 360\r\n                }\r\n            },\r\n            \"channelTitle\": \"Movieclips Classic Trailers\",\r\n            \"liveBroadcastContent\": \"none\",\r\n            \"publishTime\": \"2013-12-03T00:46:40Z\",\r\n            \"video_id\": \"YoHD9XEInc0\",\r\n            \"video_embed_html\": \"<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"//www.youtube.com/embed/YoHD9XEInc0\\\" \\n  frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; \\n  gyroscope; picture-in-picture\\\" allowfullscreen></iframe>\\\"\",\r\n            \"video_url\": \"https://www.youtube.com/watch?v=YoHD9XEInc0\",\r\n            \"vide_embed_url\": \"www.youtube.com/embed/YoHD9XEInc0\"\r\n        },\r\n        {\r\n            \"publishedAt\": \"2010-01-12T21:08:02Z\",\r\n            \"channelId\": \"UCryoEoWzq9ahZgqqGbZbnDQ\",\r\n            \"title\": \"Inception - Official Trailer [HD]\",\r\n            \"description\": \"Inception is an upcoming American science fiction film written, produced and directed by Christopher Nolan. The film is scheduled to be released in both ...\",\r\n            \"thumbnails\": {\r\n                \"default\": {\r\n                    \"url\": \"https://i.ytimg.com/vi/8hP9D6kZseM/default.jpg\",\r\n                    \"width\": 120,\r\n                    \"height\": 90\r\n                },\r\n                \"medium\": {\r\n                    \"url\": \"https://i.ytimg.com/vi/8hP9D6kZseM/mqdefault.jpg\",\r\n                    \"width\": 320,\r\n                    \"height\": 180\r\n                },\r\n                \"high\": {\r\n                    \"url\": \"https://i.ytimg.com/vi/8hP9D6kZseM/hqdefault.jpg\",\r\n                    \"width\": 480,\r\n                    \"height\": 360\r\n                }\r\n            },\r\n            \"channelTitle\": \"BoxOfficeSmashers\",\r\n            \"liveBroadcastContent\": \"none\",\r\n            \"publishTime\": \"2010-01-12T21:08:02Z\",\r\n            \"video_id\": \"8hP9D6kZseM\",\r\n            \"video_embed_html\": \"<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"//www.youtube.com/embed/8hP9D6kZseM\\\" \\n  frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; \\n  gyroscope; picture-in-picture\\\" allowfullscreen></iframe>\\\"\",\r\n            \"video_url\": \"https://www.youtube.com/watch?v=8hP9D6kZseM\",\r\n            \"vide_embed_url\": \"www.youtube.com/embed/8hP9D6kZseM\"\r\n        },\r\n        {\r\n            \"publishedAt\": \"2020-04-28T09:24:20Z\",\r\n            \"channelId\": \"UCLRlryMfL8ffxzrtqv0_k_w\",\r\n            \"title\": \"INCEPTION Trailer (2010)\",\r\n            \"description\": \"Official Inception Movie Trailer 2010 | Subscribe ➤ http://abo.yt/ki | Leonardo DiCaprio Movie Trailer | Available now on Digital, Blu-Ray and DVD | More ...\",\r\n            \"thumbnails\": {\r\n                \"default\": {\r\n                    \"url\": \"https://i.ytimg.com/vi/fTRnWXXDcL4/default.jpg\",\r\n                    \"width\": 120,\r\n                    \"height\": 90\r\n                },\r\n                \"medium\": {\r\n                    \"url\": \"https://i.ytimg.com/vi/fTRnWXXDcL4/mqdefault.jpg\",\r\n                    \"width\": 320,\r\n                    \"height\": 180\r\n                },\r\n                \"high\": {\r\n                    \"url\": \"https://i.ytimg.com/vi/fTRnWXXDcL4/hqdefault.jpg\",\r\n                    \"width\": 480,\r\n                    \"height\": 360\r\n                }\r\n            },\r\n            \"channelTitle\": \"KinoCheck International\",\r\n            \"liveBroadcastContent\": \"none\",\r\n            \"publishTime\": \"2020-04-28T09:24:20Z\",\r\n            \"video_id\": \"fTRnWXXDcL4\",\r\n            \"video_embed_html\": \"<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"//www.youtube.com/embed/fTRnWXXDcL4\\\" \\n  frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; \\n  gyroscope; picture-in-picture\\\" allowfullscreen></iframe>\\\"\",\r\n            \"video_url\": \"https://www.youtube.com/watch?v=fTRnWXXDcL4\",\r\n            \"vide_embed_url\": \"www.youtube.com/embed/fTRnWXXDcL4\"\r\n        },\r\n        {\r\n            \"publishedAt\": \"2021-06-13T14:30:08Z\",\r\n            \"channelId\": \"UCMZvXrcp_fx9cb56Mh7LMCg\",\r\n            \"title\": \"Inception (2010) - Hindi Trailer (HD)\",\r\n            \"description\": \"Cobb steals information from his targets by entering their dreams. Saito offers to wipe clean Cobb's criminal history as payment for performing an inception on ...\",\r\n            \"thumbnails\": {\r\n                \"default\": {\r\n                    \"url\": \"https://i.ytimg.com/vi/lzAy5-jyIOE/default.jpg\",\r\n                    \"width\": 120,\r\n                    \"height\": 90\r\n                },\r\n                \"medium\": {\r\n                    \"url\": \"https://i.ytimg.com/vi/lzAy5-jyIOE/mqdefault.jpg\",\r\n                    \"width\": 320,\r\n                    \"height\": 180\r\n                },\r\n                \"high\": {\r\n                    \"url\": \"https://i.ytimg.com/vi/lzAy5-jyIOE/hqdefault.jpg\",\r\n                    \"width\": 480,\r\n                    \"height\": 360\r\n                }\r\n            },\r\n            \"channelTitle\": \"Direct Hit\",\r\n            \"liveBroadcastContent\": \"none\",\r\n            \"publishTime\": \"2021-06-13T14:30:08Z\",\r\n            \"video_id\": \"lzAy5-jyIOE\",\r\n            \"video_embed_html\": \"<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"//www.youtube.com/embed/lzAy5-jyIOE\\\" \\n  frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; \\n  gyroscope; picture-in-picture\\\" allowfullscreen></iframe>\\\"\",\r\n            \"video_url\": \"https://www.youtube.com/watch?v=lzAy5-jyIOE\",\r\n            \"vide_embed_url\": \"www.youtube.com/embed/lzAy5-jyIOE\"\r\n        },\r\n        {\r\n            \"publishedAt\": \"2010-10-19T23:30:44Z\",\r\n            \"channelId\": \"UCgKkNPU2Ib7_TcyAl8M2S-w\",\r\n            \"title\": \"Inception | Digital Trailer | Warner Bros. Entertainment\",\r\n            \"description\": \"Acclaimed filmmaker Christopher Nolan directs an international cast in this sci-fi actioner that travels around the globe and into the world of dreams. Dom Cobb ...\",\r\n            \"thumbnails\": {\r\n                \"default\": {\r\n                    \"url\": \"https://i.ytimg.com/vi/Qwe6qXFTdgc/default.jpg\",\r\n                    \"width\": 120,\r\n                    \"height\": 90\r\n                },\r\n                \"medium\": {\r\n                    \"url\": \"https://i.ytimg.com/vi/Qwe6qXFTdgc/mqdefault.jpg\",\r\n                    \"width\": 320,\r\n                    \"height\": 180\r\n                },\r\n                \"high\": {\r\n                    \"url\": \"https://i.ytimg.com/vi/Qwe6qXFTdgc/hqdefault.jpg\",\r\n                    \"width\": 480,\r\n                    \"height\": 360\r\n                }\r\n            },\r\n            \"channelTitle\": \"Warner Bros. Entertainment\",\r\n            \"liveBroadcastContent\": \"none\",\r\n            \"publishTime\": \"2010-10-19T23:30:44Z\",\r\n            \"video_id\": \"Qwe6qXFTdgc\",\r\n            \"video_embed_html\": \"<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"//www.youtube.com/embed/Qwe6qXFTdgc\\\" \\n  frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; \\n  gyroscope; picture-in-picture\\\" allowfullscreen></iframe>\\\"\",\r\n            \"video_url\": \"https://www.youtube.com/watch?v=Qwe6qXFTdgc\",\r\n            \"vide_embed_url\": \"www.youtube.com/embed/Qwe6qXFTdgc\"\r\n        }\r\n    ]\r\n}"
 				}
 			]
+		},
+		{
+			"name": "Sign In",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"test_user\",\r\n    \"password\": \"test_user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/auth/login",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
