@@ -21,7 +21,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
         const jwtSecret = config.get(ENV_KEYS.JWT_SECRET);
         return {
           secret: jwtSecret,
-          signOptions: { expiresIn: '60s' },
+          signOptions: { expiresIn: '1h' },
         };
       },
     }),
