@@ -10,4 +10,18 @@ export enum ENV_KEYS {
   MOVIE_DB_SITE_URL = 'MOVIE_DB_SITE_URL',
   CACHE_TTL_SECONDS = 'CACHE_TTL_SECONDS',
   CACHE_MAX_RESPONSE_CACHING = 'CACHE_MAX_RESPONSE_CACHING',
+  JWT_SECRET = 'JWT_SECRET',
 }
+
+export const STATIC_USERS = [
+  {
+    userId: 1,
+    username: 'test_user',
+    password: 'test_user',
+  },
+  {
+    userId: 2,
+    username: 'john doe',
+    password: 'abc123!@#',
+  },
+];

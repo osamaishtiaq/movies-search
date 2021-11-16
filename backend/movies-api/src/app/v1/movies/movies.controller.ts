@@ -1,12 +1,15 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { MoviesService } from './movies.service';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { MovieSearchDto } from './dtos/movie-search-query.dto';
 import { MovieDBResponseItem } from '@shared/providers/movie-db-api/dtos/movie-db-response.dto';
 import { MovieDetailsParamDto } from './dtos/movie-details-param.dto';
 import { MovieDetailsResponse } from './dtos/movie-details-response.dto';
+import { JwtAuthGuard } from 'src/app/auth/guards/jwt-auth.guard';
 
 @ApiTags('movies')
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 @Controller({ path: 'movies', version: '1' })
 export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
