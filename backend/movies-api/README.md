@@ -9,8 +9,9 @@
 6. Input, Response and Request validation using decorators
 7. Unit & Integration tests
 8. Authentication
-9. Logging
+9. Logging     
 10. Api Healthcheck    
+11. Api versioning     
 
 
 ## Prerequisites for running locally     
