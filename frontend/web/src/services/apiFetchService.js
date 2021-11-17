@@ -84,18 +84,26 @@ export class ApiFetchService {
   }
 
   async post(url, payload, options) {
-    console.log("Calling: ", `${this.baseUrl}/${url}`);
+    try {
+      console.log("Calling: ", `${this.baseUrl}/${url}`);
 
-    const resp = await fetch(`${this.baseUrl}/${url}`, {
-      headers: this.getHeaders(),
-      method: "POST",
-      body: payload,
-      ...(options && { ...options }),
-    });
+      const resp = await fetch(`${this.baseUrl}/${url}`, {
+        headers: this.getHeaders(),
+        method: "POST",
+        body: JSON.stringify(payload),
+        ...(options && { ...options }),
+      });
 
-    const data = await resp.json();
-    console.log("data: ", data);
-    return data;
+      const data = await resp.json();
+      console.log("data: ", data);
+      return data;
+    } catch {
+      if (this.retryCount < 10) {
+        this.retryCount += 1;
+        await this.authenticate();
+        return await this.post(url, payload, options);
+      }
+    }
   }
 
   async getTopRatedMovies() {

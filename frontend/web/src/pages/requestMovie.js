@@ -5,6 +5,7 @@ import { Spacer } from "../components/shared/layout/spacer";
 
 import styled from "styled-components";
 import Colors from "../components/shared/theme/colors";
+import { ApiFetchService } from "../services/apiFetchService";
 
 const RequestMoviePage = () => {
     const [BtnMessage, setBtnMessage] = useState({
@@ -14,38 +15,24 @@ const RequestMoviePage = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(event.target.elements.name.value);
-        // localStorage.setItem('search_query', event.target.elements.search.value);
-
-        var myHeaders = new Headers();
-
-        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("auth_token")}`);
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify({
+        
+        const apiService = new ApiFetchService();
+        const payload = {
             "name": event.target.elements.name.value,
             "email": event.target.elements.email.value,
             "movie_name": event.target.elements.movie_name.value,
             "phone_number": event.target.elements.tel.value,
             "description": event.target.elements.description.value,
-        });
-
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw
         };
+        apiService.post('api/v1/forms/movie-request', payload)
+        .then(result => {
+            setBtnMessage({
+                color: "#4BB543",
+                message: "Thanks, Your request has been sent"
+            });
+        })
+        .catch(error => console.log('error', error));
 
-        fetch(`${process.env.REACT_APP_BASE_API_URL}/api/v1/forms/movie-request`, requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                console.log(result);
-                setBtnMessage({
-                    color: "#4BB543",
-                    message: "Thanks, Your request has been sent"
-                });
-            })
-            .catch(error => console.log('error', error));
     }
 
     return (

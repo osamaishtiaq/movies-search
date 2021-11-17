@@ -84,10 +84,11 @@ const SingleResult = () => {
                       Rating:<b> {data.vote_average}</b>%
                     </UserRatings>
                     <SocialShare>
-                      <FaInstagram />
-                      <FaTwitter />
-                      <FaFacebook />
-                      <FaGlobe />
+                      { data.homepage ? 
+                        <a href={data.homepage} target="_blank" title="official page" rel="noreferrer">
+                          <FaGlobe />
+                        </a>
+                      : null}
                     </SocialShare>
                   </InlineWrapper>
                   <Tagline>{data.tagline ? data.tagline : null}</Tagline>
@@ -97,7 +98,7 @@ const SingleResult = () => {
                     <span>
                       <b>{data.runtime}</b> mins
                     </span>
-                    <span>Realeased: {data.release_date}</span>
+                    <span>Released: {data.release_date}</span>
                     <span>Original Language: {data.original_language}</span>
                   </MovieInfo>
                 </Col>
@@ -108,7 +109,7 @@ const SingleResult = () => {
             <Main>
               <div>
                 <Title size={2} color={Colors.dark}>
-                  Watch Trailers
+                  On Youtube
                 </Title>
                 {data.trailers.length > 0 ? (
                   <Trailers>

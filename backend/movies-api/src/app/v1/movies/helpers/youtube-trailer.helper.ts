@@ -13,7 +13,9 @@ export function createYoutubeTrailerSearchTerm(
     movieDbDetails.release_date &&
     new Date(movieDbDetails.release_date).getFullYear();
 
-  let searchTerm = `${movieDbDetails.title}${' ' + movieYear ?? ''} trailer`;
+  let searchTerm = `${movieDbDetails.title}${
+    movieYear ? ' ' + movieYear : ''
+  } trailer`;
   searchTerm += `|${movieDbDetails.original_title} trailer`;
   return searchTerm;
 }
@@ -39,6 +41,12 @@ export function getFilteredTrailers(
           .includes(movieDbResult.title.toLocaleLowerCase()) ||
         x.title
           .toLocaleLowerCase()
-          .includes(movieDbResult.original_title.toLocaleLowerCase()),
+          .includes(movieDbResult.original_title.toLocaleLowerCase()) ||
+        x.title
+          .toLocaleLowerCase()
+          .replace(/[^a-zA-Z ]/g, '')
+          .includes(
+            movieDbResult.title.toLocaleLowerCase().replace(/[^a-zA-Z ]/g, ''),
+          ),
     );
 }
