@@ -13,9 +13,8 @@ export function createYoutubeTrailerSearchTerm(
     movieDbDetails.release_date &&
     new Date(movieDbDetails.release_date).getFullYear();
 
-  let searchTerm = `${movieDbDetails.title} ${movieYear ?? ''} trailer`;
+  let searchTerm = `${movieDbDetails.title}${' ' + movieYear ?? ''} trailer`;
   searchTerm += `|${movieDbDetails.original_title} trailer`;
-
   return searchTerm;
 }
 

@@ -33,9 +33,11 @@ export class YoutubeApiService {
       q: searchTerm,
       part: 'snippet',
     };
-    const url = `${this.baseUrl}/search?${createQueryParamsString(params)}`;
+    const url = encodeURI(
+      `${this.baseUrl}/search?${createQueryParamsString(params)}`,
+    );
 
-    Logger.log(`YoutubeApiService.searchTrailer - ${url} - ${params}`);
+    Logger.log(`YoutubeApiService.searchTrailer - ${url}`);
 
     try {
       const resp: YoutubeSearchResponseDto = await firstValueFrom(

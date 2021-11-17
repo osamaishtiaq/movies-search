@@ -47,9 +47,9 @@ export class MovieDbAPIService {
       ...(searchParam.year && { primary_release_year: searchParam.year }),
     };
 
-    const url = `${this.baseUrl}/search/movie?${createQueryParamsString(
-      params,
-    )}`;
+    const url = encodeURI(
+      `${this.baseUrl}/search/movie?${createQueryParamsString(params)}`,
+    );
     Logger.log(
       `MovieDbAPIService.getMovies - ${url} - ${JSON.stringify(searchParam)}`,
     );
