@@ -2,6 +2,5 @@
 
 ### Instructions to run
 * Run command ```npm install install```
-* Create .env file from sample.env file
 * Make sure backend api is running
 * Run ```npm run start``` to start the front-end client

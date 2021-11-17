@@ -1,11 +1,13 @@
 import { LS_KEYS } from "../common/constants";
 import { localStorageService } from "./localStorageService";
-
+import { ENV } from "../environment";
 export class ApiFetchService {
   baseUrl = "";
   localStorageService = new localStorageService();
+  retryCount = 0;
+
   constructor() {
-    this.baseUrl = `${process.env.REACT_APP_BASE_API_URL}`;
+    this.baseUrl = `${ENV.REACT_APP_BASE_API_URL}`;
   }
 
   async getSearchResults(searchTerm) {
@@ -15,9 +17,11 @@ export class ApiFetchService {
       );
       return data;
     } catch {
-      console.error("Authenticating...");
-      await this.authenticate();
-      return await this.getSearchResults(searchTerm);
+      if (this.retryCount < 10) {
+        this.retryCount += 1;
+        await this.authenticate();
+        return await this.getSearchResults(searchTerm);
+      }
     }
   }
 
@@ -26,9 +30,11 @@ export class ApiFetchService {
       const data = await this.get(`api/v1/movies/${id}`);
       return data;
     } catch {
-      console.error("Authenticating...");
-      await this.authenticate();
-      return await this.getMovieById(id);
+      if (this.retryCount < 10) {
+        this.retryCount += 1;
+        await this.authenticate();
+        return await this.getMovieById(id);
+      }
     }
   }
 
@@ -36,22 +42,21 @@ export class ApiFetchService {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
 
-    const token = this.localStorageService.getToken();
+    const token = this.localStorageService.getToken(LS_KEYS.AUTH_TOKEN);
     if (token !== null) {
-      headers.append(
-        "Authorization",
-        `Bearer ${localStorage.getItem("auth_token")}`
-      );
+      headers.append("Authorization", `Bearer ${token}`);
     }
     return headers;
   }
 
   async authenticate() {
-    var raw = JSON.stringify({
-      username: "test_user",
-      password: "test_user",
-    });
+    console.error("Authenticating...");
 
+    var raw = JSON.stringify({
+      username: ENV.API_USER,
+      password: ENV.API_USER_PWD,
+    });
+    
     var requestOptions = {
       method: "POST",
       headers: this.getHeaders(),
@@ -61,7 +66,7 @@ export class ApiFetchService {
 
     const resp = await fetch(`${this.baseUrl}/api/auth/login`, requestOptions);
     const data = await resp.json();
-    new localStorageService().setToken(LS_KEYS.AUTH_TOKEN, data.access_token);
+    this.localStorageService.setToken(data.access_token);
     return data.access_token;
   }
 
@@ -98,9 +103,11 @@ export class ApiFetchService {
       const data = await this.get("api/v1/movies/top-rated");
       return data;
     } catch (err) {
-      console.error("Authenticating...");
-      await this.authenticate();
-      return await this.getTopRatedMovies();
+      if (this.retryCount < 10) {
+        this.retryCount += 1;
+        await this.authenticate();
+        return await this.getTopRatedMovies();
+      }
     }
   }
 
@@ -109,9 +116,11 @@ export class ApiFetchService {
       const data = await this.get("api/v1/movies/trending-daily");
       return data;
     } catch (err) {
-      console.error("Authenticating...");
-      await this.authenticate();
-      return await this.getTrendingDaily();
+      if (this.retryCount < 10) {
+        this.retryCount += 1;
+        await this.authenticate();
+        return await this.getTrendingDaily();
+      }
     }
   }
 }

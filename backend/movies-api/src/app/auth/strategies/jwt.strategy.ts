@@ -12,7 +12,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       ignoreExpiration: false,
       secretOrKey: getJwtSecret(),
     });
-    console.log('KALSDLKSAMDLKSMALKDMSAD: Config key: ', getJwtSecret());
   }
 
   async validate(payload: any) {

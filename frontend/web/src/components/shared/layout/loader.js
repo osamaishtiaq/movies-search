@@ -17,7 +17,7 @@ const LoadingScreen = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: ${Colors.white};
+    color: ${Colors.pink};
 `;
 
 export default Loader;
