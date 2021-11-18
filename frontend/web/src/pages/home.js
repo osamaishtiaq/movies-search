@@ -71,10 +71,9 @@ const Home = () => {
               <Title color="#444" size={1.7}>
                 What's Popular
               </Title>
-              <Spacer value={3} />
 
               {/* Slider */}
-              <Slider slideWidth={220}>
+              <Slider>
                 {dailyPopular.map((item, i) => (
                   <Card
                     key={i}
@@ -109,10 +108,9 @@ const Home = () => {
               <Title color="#444" size={1.7}>
                 Top Rated Movies
               </Title>
-              <Spacer value={3} />
 
               {/* Slider */}
-              <Slider slideWidth={220}>
+              <Slider>
                 {topRatedMovies.map((item, i) => (
                   <Card
                     key={i}
