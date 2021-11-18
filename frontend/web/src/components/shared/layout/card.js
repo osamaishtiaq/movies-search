@@ -53,7 +53,7 @@ const CardBlock = styled.div`
   width: 200px;
   position: relative;
   border-radius: 10px/10px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.09);
   border: 5px solid ${Colors.white};
   background: linear-gradient(transparent 20%, ${Colors.dark}c9 80%),
     url(${(props) => props.mediaSrc});

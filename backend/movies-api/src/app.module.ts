@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AuthModule } from './app/auth/auth.module';
 import { UsersModule } from './app/users/users.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
@@ -16,6 +17,13 @@ import { UsersModule } from './app/users/users.module';
     ConfigModule.forRoot(),
     AuthModule,
     UsersModule,
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: 'moviesdb',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true,
+      autoLoadEntities: true,
+    }),
   ],
   controllers: [AppController],
   providers: [MovieDbAPIService],
