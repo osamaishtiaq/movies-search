@@ -13,15 +13,23 @@ export enum ENV_KEYS {
   JWT_SECRET = 'JWT_SECRET',
 }
 
+export enum ENVIRONMENT {
+  DEV = 'develop',
+  PROD = 'production',
+  STAG = 'staging',
+}
+
 export const STATIC_USERS = [
   {
-    userId: 1,
+    id: 1,
     username: 'test_user',
     password: 'test_user',
+    isActive: true,
   },
   {
-    userId: 2,
+    id: 2,
     username: 'john doe',
     password: 'abc123!@#',
+    isActive: true,
   },
 ];

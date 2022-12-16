@@ -17,9 +17,11 @@ export class MovieRequestParamDto {
 
   movie_name: string;
 
+  @IsOptional()
   @IsPhoneNumber()
   phone_number?: string;
 
+  @IsOptional()
   description?: string;
 
   @IsOptional()
